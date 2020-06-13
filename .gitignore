@@ -14,5 +14,4 @@ node_modules/
 .Trashes
 ehthumbs.db
 Thumbs.db
-src/index.ts
 .vscode/launch.json
