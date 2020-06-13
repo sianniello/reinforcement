@@ -16,7 +16,7 @@ export class GameState implements State<Action> {
         [Action.SCISSOR,    Action.ROCK]
     ]);
     constructor() {
-        this.states = new Set(Object.values(Action) as Action[]);
+        this.states = new Set(Object.values(Action).filter((a: string | number) => typeof a === 'string') as Action[]);
     }
     evaluate(v: Action): boolean {
         if (this.value === undefined) {
