@@ -1,5 +1,3 @@
-import { Tensor } from "@tensorflow/tfjs";
-
 export const getElementByName = <T extends HTMLElement>(name: string) =>
     document.getElementsByName(name) as NodeListOf<T>;
 

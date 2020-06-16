@@ -1,28 +1,19 @@
 import './styles.scss'
 import { Network } from "./Network";
 import { getElementById, getElementByName, getElementByClass } from "./documentElement";
-import { GameState, Action } from './GameState';
+import { plotProbs } from './plot';
 
 
 
 
-const phase = getElementByName<HTMLInputElement>('phase').item(0)
+const net = new Network(["SCISSOR", "ROCK", "PAPER"]);
 
-const game = new GameState();
-
-const net = new Network(game.states)
-
-const setMyMove = (v: Action) => {
+const setMyMove = (v: string) => {
     getElementById('pText').innerHTML = "My Move: " + v;
 }
 
-const setAgentMove = (v: Action) => {
-    game.value = net.next(v)
-    const evaluation = game.evaluate(v);
-    if (phase.checked) {
-        net.train(evaluation ? 100 : -100, v, () => console.log(`Trained: ${v}`, game.value, evaluation))
-    }
-    getElementById('oText').innerHTML = "Agent Move: " + game.value;
+const setAgentMove = (v: string) => {
+    getElementById('oText').innerHTML = "Agent Move: " + net.next(v);
 }
 
 const onButtonClick = (e: any) => {
@@ -31,16 +22,28 @@ const onButtonClick = (e: any) => {
 }
 
 getElementByClass<HTMLInputElement>('action-button').forEach((e: HTMLInputElement) =>
-    e.addEventListener('click', onButtonClick)
+e.addEventListener('click', onButtonClick)
 );
 
 
-let i: number | undefined;
+const evaluation = (l: string, r: string) => {
+    const map = new Map([
+        ["PAPER", "SCISSOR"],
+        ["ROCK", "PAPER"],
+        ["SCISSOR", "ROCK"]
+    ]);
+    return map.has(l) && map.get(l) === r
+}
+
+let i: number | undefined | NodeJS.Timeout;
 getElementByName<HTMLFormElement>('phase-form').item(0).addEventListener('change', (e: any) => {
-    console.log(e.target.value === 'train', i);
     if (e.target.value === 'train') {
-        i = setInterval(() => onButtonClick({target: {value: Object.values(Action)[Math.floor(Math.random() * 3)]}}));
+        i = setInterval(() => {
+            const randomAction = net.actions[Math.floor(Math.random() * 3)];
+            net.train(randomAction, evaluation);
+            plotProbs(net)
+        });
     } else if (e.target.value === 'evaluate' && i !== undefined) {
-        clearInterval(i);
+        clearInterval(i as NodeJS.Timeout);
     }
 });
