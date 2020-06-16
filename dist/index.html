@@ -1,56 +1,61 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Empty project</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/src.77de5100.css"></head>
-  <body>
-    <div id="app">
-      <div class="section">
-        <div class="container is-fluid">
-          <div class="columns is-centered">
+
+<head>
+  <title>Empty project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/src.77de5100.css"></head>
+
+<body>
+  <div id="app">
+    <div class="section">
+      <div class="container is-fluid">
+        <div class="columns is-centered">
+          
+          <div class="column">
             
             <div class="box">
-              
               <div class="columns is-centered">
                 <div class="field is-grouped justify-center">
                   <div class="control">
                     <input class="button action-button" type="button" value="ROCK" id="button-rock">
                   </div>
-  
+
                   <div class="control">
                     <input class="button action-button" type="button" value="PAPER" id="button-paper">
                   </div>
-  
+
                   <div class="control">
                     <input class="button action-button" type="button" value="SCISSOR" id="button-scissor">
                   </div>
                 </div>
               </div>
-              
+
               <p id="pText">My Move:</p>
-              
+
               <p id="oText">Agent Move:</p>
 
               <form name="phase-form">
                 <input type="radio" name="phase" value="train">
-                Train<br>
+                Train
+                <br>
                 <input type="radio" name="phase" value="evaluate" checked="">
-                Evaluate<br>
+                Evaluate
+                <br>
               </form>
-
-              <div class="columns">
-                <div id="div1" class="column"> </div>
-                <div id="div2" class="column"> </div>
-                <div id="div3" class="column"> </div>
-              </div>
-
             </div>
+            
+            <div class="container">
+              <div class="columns" id="plot"></div>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
-    <script src="/src.77de5100.js"></script>
-  </body>
+  </div>
+  <script src="/src.77de5100.js"></script>
+</body>
+
 </html>

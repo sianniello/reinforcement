@@ -22,7 +22,6 @@
     "@types/plotly.js": "^1.50.13",
     "jest": "^26.0.1",
     "parcel-bundler": "^1.12.4",
-    "prettier": "^2.0.5",
     "sass": "^1.26.8",
     "ts-jest": "^26.1.0",
     "typescript": "^3.9.5"

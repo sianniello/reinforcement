@@ -12,40 +12,42 @@
     <div class="section">
       <div class="container is-fluid">
         <div class="columns is-centered">
+          
+          <div class="column">
+            
+            <div class="box">
+              <div class="columns is-centered">
+                <div class="field is-grouped justify-center">
+                  <div class="control">
+                    <input class="button action-button" type="button" value="ROCK" id="button-rock" />
+                  </div>
 
-          <div class="box">
+                  <div class="control">
+                    <input class="button action-button" type="button" value="PAPER" id="button-paper" />
+                  </div>
 
-            <div class="columns is-centered">
-              <div class="field is-grouped justify-center">
-                <div class="control">
-                  <input class="button action-button" type="button" value="ROCK" id="button-rock" />
-                </div>
-
-                <div class="control">
-                  <input class="button action-button" type="button" value="PAPER" id="button-paper" />
-                </div>
-
-                <div class="control">
-                  <input class="button action-button" type="button" value="SCISSOR" id="button-scissor" />
+                  <div class="control">
+                    <input class="button action-button" type="button" value="SCISSOR" id="button-scissor" />
+                  </div>
                 </div>
               </div>
+
+              <p id="pText">My Move:</p>
+
+              <p id="oText">Agent Move:</p>
+
+              <form name="phase-form">
+                <input type="radio" name="phase" value="train" />
+                Train
+                <br />
+                <input type="radio" name="phase" value="evaluate" checked />
+                Evaluate
+                <br />
+              </form>
             </div>
-
-            <p id="pText">My Move:</p>
-
-            <p id="oText">Agent Move:</p>
-
-            <form name="phase-form">
-              <input type="radio" name="phase" value="train" />
-              Train<br />
-              <input type="radio" name="phase" value="evaluate" checked />
-              Evaluate<br />
-            </form>
-
-            <div class="columns">
-              <div id="div1" class="column"> </div>
-              <div id="div2" class="column"> </div>
-              <div id="div3" class="column"> </div>
+            
+            <div class="container">
+              <div class="columns" id="plot"></div>
             </div>
 
           </div>
