@@ -29,7 +29,7 @@ export class Network<T> implements INetwork<T> {
 
         const intMove = convertToOneHot(this.actions, action);
         const xs = tf.tensor2d(intMove, [1, this.actions.length]);
-        const logits = (<Tensor2D>this.model.predict(xs)).arraySync()[0];
+        const logits = (<Tensor2D>this.model.predict(xs)).arraySync()[0];   // Value prediction
             
         return this.actions[getMaxIndex(logits)];
     }
@@ -42,14 +42,16 @@ export class Network<T> implements INetwork<T> {
 
         const intMove = convertToOneHot(this.actions, action);
         const xs = tf.tensor2d(intMove, [1, this.actions.length]);
+        
         const logits = (this.model.predict(xs) as Tensor2D).arraySync()[0];
 
-        const index = Math.floor((Math.random() * this.actions.length) + 0);
-        const evaluation = evaluate(action, this.actions[index]) ? 100 : -100;
+        const index = Math.floor((Math.random() * this.actions.length) + 0);    // Random action index
+
+        const evaluation = evaluate(action, this.actions[index]) ? 100 : -100;  // Reward calculation
 
         logits[index] = logits[index] + evaluation;
 
-        console.log(`For ${action} train ${this.actions[index]} with ${evaluation}`)
+        console.log(`For ${action} trained ${this.actions[index]} with reward ${evaluation}`)
 
         const ys = tf.tensor2d(logits, [1, this.actions.length]);
 

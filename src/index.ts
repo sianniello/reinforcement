@@ -4,9 +4,9 @@ import { getElementById, getElementByName, getElementByClass } from "./documentE
 import { plotProbs } from './plot';
 
 
+const actions = ["SCISSOR", "ROCK", "PAPER"]
 
-
-const net = new Network(["SCISSOR", "ROCK", "PAPER"]);
+const net = new Network(actions);
 
 const setMyMove = (v: string) => {
     getElementById('pText').innerHTML = "My Move: " + v;
@@ -39,7 +39,7 @@ let i: number | undefined | NodeJS.Timeout;
 getElementByName<HTMLFormElement>('phase-form').item(0).addEventListener('change', (e: any) => {
     if (e.target.value === 'train') {
         i = setInterval(() => {
-            const randomAction = net.actions[Math.floor(Math.random() * 3)];
+            const randomAction = net.actions[Math.floor(Math.random() * actions.length)];
             net.train(randomAction, evaluation);
             plotProbs(net)
         });
