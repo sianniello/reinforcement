@@ -4,7 +4,7 @@ import { getElementById, getElementByName, getElementByClass } from "./documentE
 import { plotProbs } from './plot';
 
 
-const actions = ["SCISSOR", "PAPER", "ROCK"];
+const actions = ["PAPER", "SCISSOR", "ROCK"];
 
 const net = new Network(actions);
 
@@ -32,13 +32,13 @@ const evaluation = (l: string, r: string) => {
         ["ROCK", "PAPER"],
         ["SCISSOR", "ROCK"]
     ]);
-    return map.has(l) && map.get(l) === r
+    return map.has(l) && map.get(l) === r;
 }
 
 
 let i: number | undefined | NodeJS.Timeout;
+const plot = plotProbs("plot", net)
 getElementByName<HTMLFormElement>('phase-form').item(0).addEventListener('change', (e: any) => {
-    const plot = plotProbs("plot", net)
     if (e.target.value === 'train') {
         i = setInterval(() => {
             const randomAction = net.actions[Math.floor(Math.random() * actions.length)];

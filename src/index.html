@@ -12,12 +12,13 @@
     <div class="section">
       <div class="container is-fluid">
         <div class="columns is-centered">
-          
+
           <div class="column">
-            
+
             <div class="box">
               <div class="columns is-centered">
                 <div class="field is-grouped justify-center">
+
                   <div class="control">
                     <input class="button action-button" type="button" value="ROCK" id="button-rock" />
                   </div>
@@ -32,22 +33,26 @@
                 </div>
               </div>
 
-              <p id="pText">My Move:</p>
+              <div class="columns mt-4">
+                <p id="pText">My Move:</p>
+              </div>
 
-              <p id="oText">Agent Move:</p>
+              <div class="columns">
+                <p id="oText">Agent Move:</p>
+              </div>
 
               <form name="phase-form">
-                <input type="radio" name="phase" value="train" />
-                Train
-                <br />
-                <input type="radio" name="phase" value="evaluate" checked />
-                Evaluate
-                <br />
+                <div class="control">
+                  <input type="radio" name="phase" value="train" />
+                  Train
+                  <input type="radio" name="phase" value="evaluate" checked />
+                  Evaluate
+                </div>
               </form>
             </div>
-            
+
             <div class="container">
-              <div class="columns" id="plot"></div>
+              <div class="columns is-multiline" id="plot"></div>
             </div>
 
           </div>
