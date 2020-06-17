@@ -26,13 +26,13 @@ e.addEventListener('click', onButtonClick)
 );
 
 
-const evaluation = (l: string, r: string) => {
+const evaluation = (lhs: string, rhs: string) => {
     const map = new Map([
         ["PAPER", "SCISSOR"],
         ["ROCK", "PAPER"],
         ["SCISSOR", "ROCK"]
     ]);
-    return map.has(l) && map.get(l) === r;
+    return map.has(lhs) && map.get(lhs) === rhs;
 }
 
 
