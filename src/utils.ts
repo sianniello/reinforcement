@@ -17,10 +17,8 @@ export const convertToOneHot = <T>(actions: Array<T>, action: T) => {
 
 }
 
-/**
- * Choose the index of the maximum value from the array.
- *
- * Params: Array of values
- * Return: Index of the max value
- */
-export const getMaxIndex = (values: number[]) => values.indexOf(Math.max(...values));
+export const asyncForEach = async <T, V>(array: Array<T>, callback: (item: T, index: number, array: Array<T>) => Promise<V>) => {
+    for (let index = 0; index < array.length; index++) {
+        await callback(array[index], index, array);
+    }
+}
